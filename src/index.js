@@ -3,9 +3,13 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors";
 import readline from "readline";
+import { Agent } from "./agent.js";
 
 // Load environment variables
 dotenv.config();
+
+// Create agent service
+const agent = new Agent();
 
 // Terminal mode implementation
 async function runTerminalMode() {
@@ -24,12 +28,12 @@ async function runTerminalMode() {
   // Create a function to handle each conversation turn
   const processTurn = async (input, currentConversationId) => {
     try {
-    //   const result = await agent.processMessage(
-    //     input,
-    //     currentConversationId
-    //   );
-      console.log(`\n🤖 Assistant: ${'test'} ${currentConversationId}\n`);
-      return currentConversationId;
+      const result = await agent.processMessage(
+        input,
+        currentConversationId
+      );
+      console.log(`\n🤖 Assistant: ${result.response} ${currentConversationId}\n`);
+      return result.conversationId;
     } catch (error) {
       console.error("\n❌ Error processing message:", error);
       return currentConversationId;
