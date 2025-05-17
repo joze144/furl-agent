@@ -73,13 +73,13 @@ export class Agent {
     // Mint NFT in users wallet
     console.log("Minting NFT in users wallet...");
     const mintService = this.services.find((service) => service.name === "MintToken")
-    await mintService.mintToken(metadataUrl);
+    const tx = await mintService.mintToken(metadataUrl);
  
     console.log(`🤖 Assistant (initial): ${beutifiedResponse}`);
     console.log("Agent response ended");
 
     let finalResponse = {
-        nftAddress: "0x1234567890123456789012345678901234567890",
+        txHash: tx,
         imageUrl: imageUrl,
         message: beutifiedResponse
     };
