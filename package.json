@@ -1,0 +1,27 @@
+{
+  "name": "hackathon-agent",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "terminal": "node src/index.js --terminal",
+    "build": "mkdir -p dist && cp -r src/* dist/",
+    "serve": "node dist/index.js",
+    "dev": "nodemon src/index.js",
+    "create-tool": "node src/scripts/create-tool.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "@tavily/core": "^0.5.2",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "readline": "^1.3.0"
+  }
+}
